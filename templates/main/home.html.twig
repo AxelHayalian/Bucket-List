@@ -1,13 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Si ça marche je pleure pas</h1>
-</body>
-</html>
+{% extends "base.html.twig" %}
+
+
+{% block title %} Home | {{parent() }}{% endblock %}
+
+{% block body %}
+    <h1 class="h1">{{ parent() }}</h1>
+    <h2>Ceci est ma page d'accueil</h2>
+{% endblock %}
+
+
+
+

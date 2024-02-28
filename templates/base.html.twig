@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}BucketList{% endblock %}</title>
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="Icon" href="{{ asset("images/favicon.png") }}">
+
+
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="header-logo">
+              <a href="{{ path('main_home') }}" title="Go Home">
+                <img src="{{ asset('images/logo.svg') }}" alt="Bucket-List Logo">Bucket List
+              </a>
+            </h1>
+
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="{{ path('main_home') }}" title="Home">Home</a></li>
+                    <li><a href="#" title=""></a></li>
+                    <li><a href="#" title=""></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            &copy;Bucket-List {{ "now"|date ("Y") }}
+        </div>
+    </footer>
+
+
+</body>
+</html>
