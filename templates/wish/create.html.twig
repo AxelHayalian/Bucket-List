@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <h2>Added Wish</h2>
+
+    {{ form_start(formWish) }}
+        {{ form_row(formWish.title) }}
+        {{ form_row(formWish.author) }}
+        {{ form_row(formWish.description) }}
+
+        <button type="submit" class="btn btn-success">Send</button>
+    {{ form_end(formWish) }}
+
+
+{% endblock %}
+
+

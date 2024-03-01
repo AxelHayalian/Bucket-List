@@ -3,8 +3,10 @@
 {% block title %}{{ parent() }} | {{ wish.title }} {% endblock %}
 
 {% block body %}
+
     <h2>Detail of the {{  wish.title }}!</h2>
     <p>Added on {{ wish.createdAt | date('d/m/y H:i') }} </p>
     <p>By {{ wish.author }}</p>
     <p>{{ wish.description }}</p>
+
 {% endblock %}

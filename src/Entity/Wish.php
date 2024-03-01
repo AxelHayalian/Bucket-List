@@ -24,7 +24,7 @@ class Wish
     private ?string $author = null;
 
     #[ORM\Column]
-    private ?bool $isPublished = false;
+    private ?bool $isPublished = true;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt;
