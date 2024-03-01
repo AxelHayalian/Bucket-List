@@ -1,12 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Titre de l'idée ici! | {{ parent() }}{% endblock %}
+{% block title %}{{ parent() }} | {{ wish.title }} {% endblock %}
 
 {% block body %}
-    <h2>Detail of the wish.... Titre de l'idée ici!</h2>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi assumenda
-        beatae corporis deleniti doloribus ducimus harum illum maiores necessitatibus odio
-        officiis pariatur perspiciatis provident, reiciendis repellat repudiandae sapiente sequi?
-    </p>
+    <h2>Detail of the {{  wish.title }}!</h2>
+    <p>Added on {{ wish.createdAt | date('d/m/y H:i') }} </p>
+    <p>By {{ wish.author }}</p>
+    <p>{{ wish.description }}</p>
 {% endblock %}

@@ -1,13 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All wishes! | {{ parent() }}{% endblock %}
+{% block title %}{{ parent() }} | All wishes!{% endblock %}
 
 {% block body %}
-    <h2>All wishes!</h2>
-    <p>
-        Ceci est la page liste
-    </p>
+    <h2><strong>All wishes!</strong></h2>
 
+    {% for wish in wishes %}
+        <article>
+            <!-- Pour mettre le lien dessus le texte
+            <a href="{{ path('wish_detail', {id:wish.id}) }}" title="">{{ wish.title }}</a>
+            -->
+            <h5>{{ wish.title }}</h5>
+            <p>Auteur : {{ wish.author }}</p>
 
-    <button><a href="{{ path('wish_detail') }} ">Detail</a>></button>
+            <a href="{{ path('wish_detail', {'id': wish.id}) }}" title="View details" class="btn btn-primary">Show details</a>
+        </article>
+    {% endfor %}
+
 {% endblock %}
