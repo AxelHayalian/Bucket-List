@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Wish;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class WishFixtures extends Fixture
+class WishFixtures extends Fixture implements DependentFixtureInterface
 
 {
     public function load(ObjectManager $manager): void
@@ -17,6 +18,7 @@ class WishFixtures extends Fixture
         $wish1->setAuthor('John Doe');
         $wish1->setIsPublished(true);
         $wish1->setCreatedAt(new \DateTimeImmutable('2024-01-01 12:00:00'));
+        $wish1->setCategory($this->getReference('category_travel_and_adventure'));
         $manager->persist($wish1);
 
         $wish2 = new Wish();
@@ -24,6 +26,7 @@ class WishFixtures extends Fixture
         $wish2->setAuthor('John Doe');
         $wish2->setIsPublished(true);
         $wish2->setCreatedAt(new \DateTimeImmutable('2024-01-02 12:00:00'));
+        $wish2->setCategory($this->getReference('category_travel_and_adventure'));
         $manager->persist($wish2);
 
         $wish3 = new Wish();
@@ -32,6 +35,7 @@ class WishFixtures extends Fixture
         $wish3->setAuthor('Pierre Jehan');
         $wish3->setIsPublished(true);
         $wish3->setCreatedAt(new \DateTimeImmutable('2024-01-02 09:30:00'));
+        $wish3->setCategory($this->getReference('category_entertainment'));
         $manager->persist($wish3);
 
         $wish4 = new Wish();
@@ -40,8 +44,16 @@ class WishFixtures extends Fixture
         $wish4->setAuthor('Pierre Jehan');
         $wish4->setIsPublished(false);
         $wish4->setCreatedAt(new \DateTimeImmutable('2024-01-03 12:00:00'));
+        $wish4->setCategory($this->getReference('category_travel_and_adventure'));
         $manager->persist($wish4);
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            CategoryFixtures::class,
+        ];
     }
 }
