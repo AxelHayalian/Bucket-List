@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | {{ wish.title }}{% endblock %}
+
+{% block body %}
+
+    <h2>Modify {{ wish.title }}</h2>
+
+    {% include 'wish/_form.html.twig' with {'btnLabel': 'Modify'}%}
+
+
+{% endblock %}
+
+
+

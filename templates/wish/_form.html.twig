@@ -1,0 +1,10 @@
+{{ form_start(formWish) }}
+        {{ form_row(formWish.title) }}
+        {{ form_row(formWish.author) }}
+        {{ form_row(formWish.description) }}
+
+<button type="submit" class="btn btn-success">
+    {{ btnLabel|default('Send') }}
+</button>
+
+{{ form_end(formWish) }}

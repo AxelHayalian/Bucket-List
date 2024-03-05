@@ -38,7 +38,7 @@ class WishController extends AbstractController
     public function creatWish(Request $request, EntityManagerInterface $entityManager): Response{
 
         $wish = new Wish();
-        $wish->setCreatedAt(new \DateTimeImmutable());
+        //$wish->setCreatedAt(new \DateTimeImmutable());
         $form = $this->createForm(WishType::class, $wish);
 
         $form->handleRequest($request);
@@ -47,14 +47,36 @@ class WishController extends AbstractController
             $entityManager->persist($wish);
             $entityManager->flush();
 
-            $this->addFlash('Success', 'Wish added!');
-            return $this->redirectToRoute('wish_list');
+            $this->addFlash('success', 'Wish added!');
+            return $this->redirectToRoute('wish_detail',["id"=>$wish->getId()]);
         }
 
 
         return $this->render('wish/create.html.twig', [
             'formWish'=>$form
             ]);
-
     }
+
+    #[Route('/edit/{id}', name: 'wish_edit')]
+    public function edit(Wish $wish, Request $request, EntityManagerInterface $entityManager)
+    {
+
+        $form = $this->createForm(WishType::class, $wish);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($wish);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Wish has been modified!');
+            return $this->redirectToRoute('wish_detail', ["id" => $wish->getId()]);
+
+        }
+        return $this->render('wish/edit.html.twig', [
+            'wish' => $wish,
+            'formWish' => $form
+        ]);
+    }
+
 }
