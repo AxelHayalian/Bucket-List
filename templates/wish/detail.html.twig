@@ -7,6 +7,7 @@
     <h2>Detail of the {{  wish.title }}!</h2>
     <p>Added on {{ wish.createdAt | date('d/m/y H:i') }} </p>
     <p>By {{ wish.author }}</p>
+    <p>Category : {{ wish.category.name }}</p>
     <p>{{ wish.description }}</p>
 
 {% endblock %}

@@ -11,7 +11,8 @@
             <a href="{{ path('wish_detail', {id:wish.id}) }}" title="">{{ wish.title }}</a>
             -->
             <h5>{{ wish.title }}</h5>
-            <p>Auteur : {{ wish.author }}</p>
+            <p>Author : {{ wish.author }}</p>
+            <p>Category : {{ wish.category.name }}</p>
 
             <a href="{{ path('wish_detail', {'id': wish.id}) }}" title="View details" class="btn btn-primary">Show details</a>
             <a href="{{ path('wish_edit', {'id': wish.id}) }}" title="Modify details" class="btn btn-secondary">Modify</a>
