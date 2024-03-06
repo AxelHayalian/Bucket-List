@@ -37,6 +37,8 @@ class WishController extends AbstractController
     #[Route('/create', name: 'wish_create')]
     public function creatWish(Request $request, EntityManagerInterface $entityManager): Response{
 
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         $wish = new Wish();
         //$wish->setCreatedAt(new \DateTimeImmutable());
         $form = $this->createForm(WishType::class, $wish);
