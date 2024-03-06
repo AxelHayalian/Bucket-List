@@ -21,6 +21,24 @@ class WishRepository extends ServiceEntityRepository
         parent::__construct($registry, Wish::class);
     }
 
+    public function findLastWishes(int $limit = 10): array
+    {
+        //return $this->findBy(['isPublished' => true], ['createdAt' => 'DESC']);
+
+        $qb = $this->createQueryBuilder('wish');
+
+        $qb->addSelect('category')
+            ->join('wish.category', 'category')
+            ->where($qb->expr()->eq('wish.isPublished', true))
+            ->orderBy('wish.createdAt' , 'DESC')
+            ->setMaxResults($limit);
+
+
+
+        return $qb->getQuery()->getResult();
+    }
+
+
 //    /**
 //     * @return Wish[] Returns an array of Wish objects
 //     */
